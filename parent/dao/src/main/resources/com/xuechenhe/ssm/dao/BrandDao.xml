@@ -40,4 +40,27 @@
 	    where id=#{id}
 	</select>
 	
+	<update id="update" parameterType="com.xuechenhe.ssm.pojo.Brand">
+		update bbs_brand 
+		<set>
+		   <if test="name!=null">
+		      name=#{name},
+		   </if>
+		   <if test="description!=null">
+		      description=#{description},
+		   </if>
+		   <if test="imgUrl!=null">
+		      img_url=#{imgUrl},
+		   </if>
+		   <if test="sort!=null">
+		      sort=#{sort},
+		   </if>
+		   <if test="isDisplay!=null">
+		      is_display=#{isDisplay},
+		   </if>
+		</set>
+		where id=#{id}
+		<!-- set name=1, description=1 ,img_url=1 ,sort=1 and is_display=1 where id=1 -->
+	</update>
+	
 </mapper>

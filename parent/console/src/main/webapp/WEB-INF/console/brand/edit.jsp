@@ -28,7 +28,7 @@ function uploadPic(){
 	<div class="clear"></div>
 </div>
 <div class="body-box" style="float:right">
-	<form id="jvForm" action="edit.do" method="post" enctype="multipart/form-data">
+	<form id="jvForm" action="/brand/update.action" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="${brand.id }"/>
 		<table cellspacing="1" cellpadding="2" width="100%" border="0" class="pn-ftable">
 			<tbody>

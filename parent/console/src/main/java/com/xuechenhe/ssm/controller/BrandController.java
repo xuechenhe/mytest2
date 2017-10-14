@@ -1,6 +1,5 @@
 package com.xuechenhe.ssm.controller;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,5 +35,9 @@ public class BrandController {
 		return "brand/edit";
 	}
 	
-	
+	@RequestMapping("update")
+	public String update(Brand brand) {
+		brandService.update(brand);
+		return "redirect:/brand/list.action";
+	}
 }

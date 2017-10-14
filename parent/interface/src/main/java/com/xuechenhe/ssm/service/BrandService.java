@@ -13,4 +13,6 @@ public interface BrandService {
 	public abstract Pagination findBrandPage(String name,Integer isDisplay,Integer pageNo);
 
 	public abstract Brand findBrandById(Long id);
+
+	public abstract void update(Brand brand);
 }
