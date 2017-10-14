@@ -11,8 +11,13 @@
 	<!-- 1. 跟当前服务起个名因为 注册中心需要使用 -->
 	<dubbo:application name="babasport-console" />
 	<!-- 2. 连接注册中心 -->
-	<dubbo:registry address="192.168.200.128:2181" protocol="zookeeper" />
+	<!-- <dubbo:registry address="192.168.200.128:2181" protocol="zookeeper" /> -->
+	<dubbo:registry address="N/A"/>
 	<!-- 3. 消费默认1000 一秒 -->
 	<dubbo:reference interface="com.xuechenhe.ssm.service.TbTestService"
-		id="tbTestService" />
+		id="tbTestServiceImpl"  url="dubbo://127.0.0.1:20880"/>
+
+	<!-- 超时全局设置 10分钟 -->
+	<dubbo:consumer timeout="600000" check="false"/>
+
 </beans>
