@@ -52,4 +52,11 @@ public class BrandController {
 		return "redirect:list.action";
 		
 	}
+	
+	@RequestMapping("deleteBrand")
+	public String deleteBrand(Long id) {
+		brandService.deleteBrand(id);
+		return "redirect:/brand/list.action";
+		
+	}
 }

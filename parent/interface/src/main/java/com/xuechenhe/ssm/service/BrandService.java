@@ -17,4 +17,6 @@ public interface BrandService {
 	public abstract void update(Brand brand);
 
 	public abstract void addBrand(Brand brand);
+
+	public abstract void deleteBrand(Long id);
 }

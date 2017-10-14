@@ -77,7 +77,7 @@
 			   <c:if test="${brand.isDisplay==0 }">否</c:if>
 			</td>
 			<td align="center">
-			<a class="pn-opt" href="/brand/toUpdate.action?id=${brand.id }">修改</a> | <a class="pn-opt" onclick="if(!confirm('您确定删除吗？')) {return false;}" href="#">删除</a>
+			<a class="pn-opt" href="/brand/toUpdate.action?id=${brand.id }">修改</a> | <a class="pn-opt" onclick="if(!confirm('您确定删除吗？')) {return false;}" href="/brand/deleteBrand.action?id=${brand.id}">删除</a>
 			</td>
 		</tr>
 	</c:forEach>

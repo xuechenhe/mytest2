@@ -67,4 +67,8 @@
 		insert into bbs_brand (name,description,img_url,sort,is_display) values (#{name},#{description},#{imgUrl},#{sort},#{isDisplay})
 	</insert>
 	
+	
+	<delete id="deleteBrand" parameterType="long">
+		delete from bbs_brand where id=#{id}
+	</delete>
 </mapper>
