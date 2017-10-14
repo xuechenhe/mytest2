@@ -28,5 +28,7 @@
 	<!-- 4. 注册接口 -->
 	<dubbo:service interface="com.xuechenhe.ssm.service.TbTestService"
 		ref="tbTestServiceImpl" />
+	<dubbo:service interface="com.xuechenhe.ssm.service.BrandService"
+		ref="brandServiceImpl" />
 </beans>
  
