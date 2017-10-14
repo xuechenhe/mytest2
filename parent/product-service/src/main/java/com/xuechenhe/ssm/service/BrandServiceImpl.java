@@ -39,7 +39,7 @@ public class BrandServiceImpl implements BrandService {
 			bq.setIsDisplay(isDisplay);
 			params.append("&isDisplay").append(isDisplay);
 		}
-		List<Brand> list = brandDao.queryBrandByNameAndIsDisplay(bq);
+		List<Brand> list = brandDao.queryBrandPageByQuery(bq);
 		int count = brandDao.queryBrandPageCountByQuery(bq);
 		Pagination page=new Pagination(bq.getPageNo(), bq.getPageSize(), count, list);
 		
@@ -55,6 +55,11 @@ public class BrandServiceImpl implements BrandService {
 	public void update(Brand brand) {
 		
 		brandDao.update(brand);
+	}
+	@Override
+	public void addBrand(Brand brand) {
+		brandDao.addBrand(brand);
+		
 	}
  
 

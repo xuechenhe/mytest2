@@ -40,4 +40,16 @@ public class BrandController {
 		brandService.update(brand);
 		return "redirect:/brand/list.action";
 	}
+	
+	@RequestMapping("toAdd")
+	public String toAdd(Brand brand) {
+		return "brand/add";
+		
+	}
+	@RequestMapping("add")
+	public String add(Brand brand) {
+		brandService.addBrand(brand);
+		return "redirect:list.action";
+		
+	}
 }

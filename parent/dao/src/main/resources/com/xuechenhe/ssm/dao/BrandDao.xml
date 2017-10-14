@@ -63,4 +63,8 @@
 		<!-- set name=1, description=1 ,img_url=1 ,sort=1 and is_display=1 where id=1 -->
 	</update>
 	
+	<insert id="addBrand" parameterType="com.xuechenhe.ssm.pojo.Brand">
+		insert into bbs_brand (name,description,img_url,sort,is_display) values (#{name},#{description},#{imgUrl},#{sort},#{isDisplay})
+	</insert>
+	
 </mapper>
