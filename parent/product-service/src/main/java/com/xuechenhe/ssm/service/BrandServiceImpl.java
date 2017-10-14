@@ -46,5 +46,11 @@ public class BrandServiceImpl implements BrandService {
 		page.pageView("/brand/list.action",params.toString());
 		return page;
 	}
+	@Override
+	public Brand findBrandById(Long id) {
+		Brand brand = brandDao.findBrandById(id);
+		return brand;
+	}
+ 
 
 }
