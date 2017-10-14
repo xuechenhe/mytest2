@@ -31,5 +31,14 @@ public class CenterController {
 		return "right";
 		
 	}
-	
+	@RequestMapping("frame/productMain")
+	public  String productMain() {
+		return "frame/product_main";
+		
+	}
+	@RequestMapping("frame/productLeft")
+	public  String productLeft() {
+		return "frame/product_left";
+		
+	}
 }
