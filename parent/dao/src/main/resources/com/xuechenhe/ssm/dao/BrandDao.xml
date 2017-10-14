@@ -35,5 +35,9 @@
 	   select count(*) from bbs_brand <include refid="brandPage_where"></include>
 	</select>
 	
+	<select id="findBrandById" parameterType="long" resultType="com.xuechenhe.ssm.pojo.Brand">
+	    select  id,name,description,img_url as imgUrl,sort,is_display as isDisplay from bbs_brand 
+	    where id=#{id}
+	</select>
 	
 </mapper>

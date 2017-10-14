@@ -12,4 +12,6 @@ public interface BrandDao {
 	public  abstract List<Brand>  queryBrandPageByQuery(BrandQuery brandQuery);
 	
 	public  abstract int queryBrandPageCountByQuery(BrandQuery brandQuery);
+
+	public abstract Brand findBrandById(Long id);
 }

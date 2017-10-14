@@ -11,4 +11,6 @@ public interface BrandService {
 	public abstract List<Brand> queryBrandByNameAndIsDisplay(String name,Integer isDisplay);
 	
 	public abstract Pagination findBrandPage(String name,Integer isDisplay,Integer pageNo);
+
+	public abstract Brand findBrandById(Long id);
 }

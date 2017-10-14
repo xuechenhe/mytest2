@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.xuechenhe.ssm.pojo.Brand;
 import com.xuechenhe.ssm.service.BrandService;
 
 import cn.itcast.common.page.Pagination;
@@ -27,4 +28,13 @@ public class BrandController {
 		return "brand/list";
 		
 	}
+	
+	@RequestMapping("toUpdate")
+	public String toUpdate(Long id,Model model) {
+		Brand brand = brandService.findBrandById(id);
+		model.addAttribute("brand", brand);
+		return "brand/edit";
+	}
+	
+	
 }
