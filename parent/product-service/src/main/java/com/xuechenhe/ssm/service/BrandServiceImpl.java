@@ -66,6 +66,18 @@ public class BrandServiceImpl implements BrandService {
 		brandDao.deleteBrand(id);
 		
 	}
+	@Override
+	public void deleteAll(String ids) {
+		String[] split = ids.split(",");
+		for (String s : split) {
+			long id=Long.valueOf(s);
+			brandDao.deleteBrand(id);
+		}
+		
+		
+	}
+	
+
  
 
 }

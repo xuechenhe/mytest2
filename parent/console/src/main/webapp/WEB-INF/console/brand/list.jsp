@@ -6,27 +6,27 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <title>babasport-list</title>
 <script type="text/javascript">
-// function checkBox(name, target){
-// 	$("input[name='"+name+"']").attr("checked", target);
-// }
+ function checkBox(name, target){
+ 	$("input[name='"+name+"']").attr("checked", target);
+ }
 
-// //批量删除
-// function optDelete(name,isDisplay,pageNo){
-// 	var size = $("input[name='ids']:checked").size();
-// 	if(size == 0){
-// 		alert("请选中要删除的记录!");	
-// 		return;
-// 	}
+ //批量删除
+ function optDelete(name,isDisplay,pageNo){
+ 	var size = $("input[name='ids']:checked").size();
+ 	if(size == 0){
+ 		alert("请选中要删除的记录!");	
+ 		return;
+ 	}
 	
-// 	if(!confirm("你确定删除吗!")){
-// 		return;
-// 	}
-//	$("#name").val(name);
-//	$("#isDisplay").val(isDisplay);
-//	$("#pageNo").val(pageNo);
-// 	$("#jvForm").attr("action","/brand/deleteAll.action");
-// 	$("#jvForm").submit();
-// }
+ 	if(!confirm("你确定删除吗!")){
+ 		return;
+ 	}
+	$("#name").val(name);
+	$("#isDisplay").val(isDisplay);
+	$("#pageNo").val(pageNo);
+ 	$("#jvForm").attr("action","/brand/deleteAll.action");
+ 	$("#jvForm").submit();
+ }
 </script>
 </head>
 <body>

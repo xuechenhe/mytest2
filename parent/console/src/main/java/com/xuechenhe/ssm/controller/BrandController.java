@@ -59,4 +59,11 @@ public class BrandController {
 		return "redirect:/brand/list.action";
 		
 	}
+	
+	@RequestMapping("deleteAll")
+	public String deleteAll(String ids) {
+		brandService.deleteAll(ids);
+		return "redirect:/brand/list.action";
+		
+	}
 }
