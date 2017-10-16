@@ -20,5 +20,5 @@ public interface BrandService {
 
 	public abstract void deleteBrand(Long id);
 
-	public abstract void deleteAll(String ids);
+	public abstract void deleteAll(long[] ids);
 }

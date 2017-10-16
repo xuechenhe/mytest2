@@ -60,10 +60,37 @@ public class BrandController {
 		
 	}
 	
-	@RequestMapping("deleteAll")
-	public String deleteAll(String ids) {
+	/**
+	 * 带条件使用重定向批量删除
+	 * @param ids
+	 * @param name
+	 * @param isDisplay
+	 * @param pageNo
+	 * @param model
+	 * @return
+	 */
+	/*@RequestMapping("deleteAll")
+	public String deleteAll(long[] ids,String name,Integer isDisplay,Integer pageNo,Model model) {
 		brandService.deleteAll(ids);
+		model.addAttribute("name", name);
+		model.addAttribute("isDisplay", isDisplay);
+		model.addAttribute("pageNo", pageNo);
+		
 		return "redirect:/brand/list.action";
 		
+	}*/
+	/**
+	 * 带条件使用转发批量删除
+	 * @param ids
+	 * @return
+	 */
+	@RequestMapping("deleteAll")
+	public String deleteAll(long[] ids ) {
+		brandService.deleteAll(ids);
+		 
+		return "forward:list.action";
+		
 	}
+	
+	
 }

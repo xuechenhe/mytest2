@@ -95,7 +95,7 @@
 	
 	</span>
 </div>
-<div style="margin-top:15px;"><input class="del-button" type="button" value="删除" onclick="optDelete();"/></div>
+<div style="margin-top:15px;"><input class="del-button" type="button" value="删除" onclick="optDelete('${brand.name}','${brand.isDisplay}','${page.pageNo}');"/></div>
 </div>
 </body>
 </html>

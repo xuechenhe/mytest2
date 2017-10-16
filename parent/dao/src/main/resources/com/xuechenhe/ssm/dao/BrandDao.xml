@@ -71,4 +71,11 @@
 	<delete id="deleteBrand" parameterType="long">
 		delete from bbs_brand where id=#{id}
 	</delete>
+	
+	<delete id="deleteAll" parameterType="long[]">
+		delete from bbs_brand where 
+		<foreach collection="array" item="id" open="id in ("  close=")"  separator=",">
+			#{id}
+		</foreach>
+	</delete>
 </mapper>
