@@ -38,11 +38,12 @@ public class ProductServiceImpl implements ProductService{
 			criteria.andIsShowEqualTo(isShow);
 			params.append("&isShow=").append(isShow);
 		}
+		//未逻辑删除的
+		criteria.andIsDelEqualTo(true);
 		pq.setPageSize(10);
 		pq.setPageNo(Pagination.cpn(pageNo));
 		
 		pq.setOrderByClause("id desc");
-		
 		
 		int totalCount=productDao.countByExample(pq);
 		List<Product> list=productDao.selectByExample(pq);
