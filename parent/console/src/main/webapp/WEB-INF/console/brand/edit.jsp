@@ -9,7 +9,7 @@ function uploadPic(){
 	var options = {
 			url : "/upload/uploadPic.action",
 			type : "post",
-			dataType : "json",
+			dataType : "json",+
 			success : function(data){
 				$("#allUrl").attr("src", data.url);
 				$("#imgUrl").val(data.url);
