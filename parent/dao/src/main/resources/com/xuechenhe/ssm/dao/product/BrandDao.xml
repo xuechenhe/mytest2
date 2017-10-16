@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xuechenhe.ssm.dao.product.BrandDao" >
+	<select id="queryBrandByNameAndIsDisplay" parameterType="com.xuechenhe.ssm.pojo.product.BrandQuery" resultType="com.xuechenhe.ssm.pojo.product.Brand">
+		select  id,name,description,img_url as imgUrl,sort,is_display as isDisplay from bbs_brand 
+		<where>
+		   <if test="name!=null">
+		     and name like '%${name}%'
+		   </if>
+		   <if test="isDisplay!=null">
+		    and is_display=#{isDisplay}
+		   </if>
+		</where>
+	</select>
+	
+	<sql id="brandPage_where">
+		<where>
+		   <if test="name!=null">
+		     and name like '%${name}%'
+		   </if>
+		   <if test="isDisplay!=null">
+		    and is_display=#{isDisplay}
+		   </if>
+		</where>
+	
+	</sql>
+	
+	<select id="queryBrandPageByQuery"  parameterType="com.xuechenhe.ssm.pojo.product.BrandQuery" resultType="com.xuechenhe.ssm.pojo.product.Brand">
+		select  id,name,description,img_url as imgUrl,sort,is_display as isDisplay from bbs_brand 
+		<include refid="brandPage_where"></include>
+		limit #{startRow},#{pageSize}
+	</select>
+	
+	<select id="queryBrandPageCountByQuery" parameterType="com.xuechenhe.ssm.pojo.product.BrandQuery" resultType="int">
+	   select count(*) from bbs_brand <include refid="brandPage_where"></include>
+	</select>
+	
+	<select id="findBrandById" parameterType="long" resultType="com.xuechenhe.ssm.pojo.product.Brand">
+	    select  id,name,description,img_url as imgUrl,sort,is_display as isDisplay from bbs_brand 
+	    where id=#{id}
+	</select>
+	
+	<update id="update" parameterType="com.xuechenhe.ssm.pojo.product.Brand">
+		update bbs_brand 
+		<set>
+		   <if test="name!=null">
+		      name=#{name},
+		   </if>
+		   <if test="description!=null">
+		      description=#{description},
+		   </if>
+		   <if test="imgUrl!=null">
+		      img_url=#{imgUrl},
+		   </if>
+		   <if test="sort!=null">
+		      sort=#{sort},
+		   </if>
+		   <if test="isDisplay!=null">
+		      is_display=#{isDisplay},
+		   </if>
+		</set>
+		where id=#{id}
+		<!-- set name=1, description=1 ,img_url=1 ,sort=1 and is_display=1 where id=1 -->
+	</update>
+	
+	<insert id="addBrand" parameterType="com.xuechenhe.ssm.pojo.product.Brand">
+		insert into bbs_brand (name,description,img_url,sort,is_display) values (#{name},#{description},#{imgUrl},#{sort},#{isDisplay})
+	</insert>
+	
+	
+	<delete id="deleteBrand" parameterType="long">
+		delete from bbs_brand where id=#{id}
+	</delete>
+	
+	<delete id="deleteAll" parameterType="long[]">
+		delete from bbs_brand where 
+		<foreach collection="array" item="id" open="id in ("  close=")"  separator=",">
+			#{id}
+		</foreach>
+	</delete>
+</mapper>

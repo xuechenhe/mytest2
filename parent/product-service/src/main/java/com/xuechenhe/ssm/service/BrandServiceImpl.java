@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.xuechenhe.ssm.dao.BrandDao;
-import com.xuechenhe.ssm.pojo.Brand;
-import com.xuechenhe.ssm.pojo.BrandQuery;
+import com.xuechenhe.ssm.dao.product.BrandDao;
+import com.xuechenhe.ssm.pojo.product.Brand;
+import com.xuechenhe.ssm.pojo.product.BrandQuery;
 
 import cn.itcast.common.page.Pagination;
 @Service("brandServiceImpl")

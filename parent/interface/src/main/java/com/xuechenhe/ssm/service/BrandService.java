@@ -2,7 +2,7 @@ package com.xuechenhe.ssm.service;
 
 import java.util.List;
 
-import com.xuechenhe.ssm.pojo.Brand;
+import com.xuechenhe.ssm.pojo.product.Brand;
 
 import cn.itcast.common.page.Pagination;
 
