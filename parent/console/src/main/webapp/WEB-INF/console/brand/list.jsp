@@ -8,7 +8,9 @@
 <script type="text/javascript">
  function checkBox(name, target){
  	$("input[name='"+name+"']").attr("checked", target);
+ 	
  }
+
 
  //批量删除
  function optDelete(name,isDisplay,pageNo){
@@ -26,6 +28,23 @@
 	$("#pageNo").val(pageNo);
  	$("#jvForm").attr("action","/brand/deleteAll.action");
  	$("#jvForm").submit();
+ }
+ 
+ function optCheck(){
+// 	var len= $("input[name='ids']").length;
+// 	var len2=$("input[name='ids']:checked").length;
+
+// 	if(len2==len){
+// 	  $("#checkAlls").attr("checked",true);
+// 	}else{
+// 	  $("#checkAlls").attr("checked",false);
+// 	}
+	 var chk=($("input[name='ids']").length==$("input[name='ids']:checked").length); 
+// 	alert(chk);
+	$("#checkAlls").attr("checked",chk);
+	 
+	
+	 
  }
 </script>
 </head>
@@ -53,7 +72,9 @@
 <table cellspacing="1" cellpadding="0" border="0" width="100%" class="pn-ltable">
 	<thead class="pn-lthead">
 		<tr>
-			<th width="20"><input type="checkbox" onclick="checkBox('ids',this.checked)"/></th>
+			<th width="20">
+				<input type="checkbox"  id="checkAlls" onclick="checkBox('ids',this.checked)"/>
+			</th>
 			<th>品牌ID</th>
 			<th>品牌名称</th>
 			<th>品牌图片</th>
@@ -66,7 +87,7 @@
 	<tbody class="pn-ltbody">
 	<c:forEach items="${page.list}" var="brand">
 		<tr bgcolor="#ffffff" onmouseout="this.bgColor='#ffffff'" onmouseover="this.bgColor='#eeeeee'">
-			<td><input type="checkbox" value="${brand.id}" name="ids"/></td>
+			<td><input type="checkbox" value="${brand.id}" name="ids" onclick="optCheck()"/></td>
 			<td align="center">${brand.id}</td>
 			<td align="center">${brand.name}</td>
 			<td align="center"><img width="40" height="40" src="${brand.imgUrl}"/></td>
