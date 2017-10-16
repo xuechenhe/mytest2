@@ -80,7 +80,10 @@ public class Product implements Serializable {
     private Date createTime;
 
     private static final long serialVersionUID = 1L;
-
+    public  String[] getImages() {
+		return imgUrl.split(",");
+    	
+    }
     public Long getId() {
         return id;
     }

@@ -78,7 +78,7 @@ function HoverLi(id){
                                 <td style="background-image:url('/images/admin/nav-left.png')" width="14" height="31"></td>
                                 <td>
                                 	<ul class="nav-menu">
-                                    	<li class="current" id="tb_11" onclick="HoverLi(11);"><a href="main.jsp" target="mainFrame">首页</a></li>
+                                    	<li class="current" id="tb_11" onclick="HoverLi(11);"><a href="/console/main.action" target="mainFrame">首页</a></li>
 										<li class="sep"></li><li class="normal" id="tb_12" onclick="HoverLi(12);"><a href="/console/frame/productMain.action" target="mainFrame">商品</a></li>
 										<li class="sep"></li><li class="normal" id="tb_13" onclick="HoverLi(13);"><a href="frame/order_main.jsp" target="mainFrame">订单</a></li>
 										<li class="sep"></li><li class="normal" id="tb_14" onclick="HoverLi(14);"><a href="frame/ad_main.jsp" target="mainFrame">广告</a></li>
