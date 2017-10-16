@@ -30,5 +30,7 @@
 		ref="tbTestServiceImpl" />
 	<dubbo:service interface="com.xuechenhe.ssm.service.BrandService"
 		ref="brandServiceImpl" />
+	<dubbo:service interface="com.xuechenhe.ssm.service.UploadService"
+		ref="uploadServiceImpl" />
 </beans>
  
