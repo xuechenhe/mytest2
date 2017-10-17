@@ -15,6 +15,7 @@ import com.xuechenhe.ssm.pojo.product.ProductQuery.Criteria;
 import com.xuechenhe.ssm.pojo.product.Sku;
 
 import cn.itcast.common.page.Pagination;
+import redis.clients.jedis.Jedis;
 
 
 @Service("productServiceImpl")
@@ -24,6 +25,8 @@ public class ProductServiceImpl implements ProductService{
 	private ProductDao productDao;
 	@Autowired
 	private SkuDao skuDao;
+	@Autowired
+	private Jedis jedis;
 
 	@Override
 	public Pagination findProductPage(String name, Long brandId, Boolean isShow, Integer pageNo) {
@@ -59,6 +62,12 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public void insertProduct(Product product) {
+		
+		
+		Long productId = jedis.incr("pno");
+		product.setId(productId);
+		
+		
 		product.setCreateTime(new Date());
 		product.setIsDel(true);
 		product.setIsShow(false);

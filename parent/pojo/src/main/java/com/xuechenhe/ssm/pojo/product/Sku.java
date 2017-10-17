@@ -18,6 +18,9 @@ public class Sku implements Serializable {
      * 颜色ID
      */
     private Long colorId;
+    
+    //
+    private Color color;
 
     /**
      * 尺码
@@ -52,8 +55,17 @@ public class Sku implements Serializable {
     private Date createTime;
 
     private static final long serialVersionUID = 1L;
+    
 
-    public Long getId() {
+    public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
+	}
+
+	public Long getId() {
         return id;
     }
 
