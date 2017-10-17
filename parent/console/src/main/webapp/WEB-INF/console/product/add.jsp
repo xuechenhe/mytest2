@@ -64,7 +64,7 @@ $(function(){
 function uploadPic(){
 	//上传图片 异步的  	Jquery.form.js
 	var options = {
-			url : "/upload/uploadPics.do",
+			url : "/upload/uploadPics.action",
 			type : "post",
 			dataType : "json",
 			success : function(data){
