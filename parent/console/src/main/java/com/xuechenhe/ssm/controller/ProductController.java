@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.xuechenhe.ssm.pojo.product.Brand;
+import com.xuechenhe.ssm.pojo.product.Color;
 import com.xuechenhe.ssm.service.BrandService;
+import com.xuechenhe.ssm.service.ColorService;
 import com.xuechenhe.ssm.service.ProductService;
 
 import cn.itcast.common.page.Pagination;
@@ -22,6 +24,9 @@ public class ProductController {
 	@Autowired
 	
 	private BrandService  brandService;
+	@Autowired
+	
+	private ColorService  colorService;
 	
 	@RequestMapping("list")
 	public String list(String name,Long brandId,boolean isShow,Integer pageNo,Model model) {
@@ -35,6 +40,15 @@ public class ProductController {
 		Pagination page = productService.findProductPage(name, brandId, isShow, pageNo);
 		model.addAttribute("page", page);
 		return "product/list";
+		
+	}
+	@RequestMapping("toAdd")
+	public String toAdd(Model model) {
+		List<Color> colorList = colorService.findColorList();
+		List<Brand> brandList = brandService.queryBrandByNameAndIsDisplay(null, null);
+		model.addAttribute("colorList", colorList);
+		model.addAttribute("brandList", brandList);
+		return "product/add";
 		
 	}
 }

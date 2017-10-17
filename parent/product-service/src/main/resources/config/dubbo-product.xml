@@ -34,5 +34,7 @@
 		ref="uploadServiceImpl" />
 	<dubbo:service interface="com.xuechenhe.ssm.service.ProductService"
 		ref="productServiceImpl" />
+	<dubbo:service interface="com.xuechenhe.ssm.service.ColorService"
+		ref="colorServiceImpl" />
 </beans>
  
