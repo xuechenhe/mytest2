@@ -92,7 +92,7 @@ function uploadPic(){
 <div class="box-positon">
 	<div class="rpos">当前位置: 商品管理 - 添加</div>
 	<form class="ropt">
-		<input type="submit" onclick="this.form.action='v_list.do';" value="返回列表" class="return-button"/>
+		<input type="submit" onclick="this.form.action='/product/list.action';" value="返回列表" class="return-button"/>
 	</form>
 	<div class="clear"></div>
 </div>
@@ -133,9 +133,10 @@ function uploadPic(){
 						商品品牌:</td><td width="80%" class="pn-fcontent">
 						<select name="brandId">
 							<option value="">请选择品牌</option>
-							<option value="1">依琦莲</option>
-							<option value="2">凯速（KANSOON）</option>
-							<option value="3">梵歌纳（vangona）</option>
+							<c:forEach items="${brandList }" var="brand"> 
+								<option value="${brand.id }">${brand.name }</option>
+							</c:forEach>
+							 
 						</select>
 					</td>
 				</tr>
@@ -149,13 +150,10 @@ function uploadPic(){
 					<td width="20%" class="pn-flabel pn-flabel-h">
 						<span class="pn-frequired">*</span>
 						颜色:</td><td width="80%" class="pn-fcontent">
-							<input type="checkbox" value="9" name="colors"/>西瓜红
-							<input type="checkbox" value="9" name="colors"/>西瓜红
-							<input type="checkbox" value="9" name="colors"/>西瓜红
-							<input type="checkbox" value="9" name="colors"/>西瓜红
-							<input type="checkbox" value="9" name="colors"/>西瓜红
-							<input type="checkbox" value="9" name="colors"/>西瓜红
-							<input type="checkbox" value="9" name="colors"/>西瓜红
+						<c:forEach var="color" items="${colorList }">
+							<input type="checkbox" value="${color.id }" name="colors"/>${color.name }
+						</c:forEach>
+							 
 					</td>
 				</tr>
 				<tr>
