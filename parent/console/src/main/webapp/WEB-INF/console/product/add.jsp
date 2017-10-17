@@ -103,7 +103,7 @@ function uploadPic(){
 <a href="javascript:void(0);" ref="#tab_4" title="包装清单" class="nor">包装清单</a>
 </span></h2>
 <div class="body-box" style="float:right">
-	<form id="jvForm" action="add.do" method="post" enctype="multipart/form-data">
+	<form id="jvForm" action="/product/add.action" method="post" enctype="multipart/form-data">
 		<table cellspacing="1" cellpadding="2" width="100%" border="0" class="pn-ftable">
 			<tbody id="tab_1">
 				<tr>

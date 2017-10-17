@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.xuechenhe.ssm.pojo.product.Brand;
 import com.xuechenhe.ssm.pojo.product.Color;
+import com.xuechenhe.ssm.pojo.product.Product;
 import com.xuechenhe.ssm.service.BrandService;
 import com.xuechenhe.ssm.service.ColorService;
 import com.xuechenhe.ssm.service.ProductService;
@@ -49,6 +50,12 @@ public class ProductController {
 		model.addAttribute("colorList", colorList);
 		model.addAttribute("brandList", brandList);
 		return "product/add";
+		
+	}
+	@RequestMapping("add")
+	public String  add(Product product) {
+		productService.insertProduct(product);
+		return "redirect:list.action";
 		
 	}
 }
