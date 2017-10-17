@@ -4,8 +4,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FilenameUtils;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartRequest;
 
 import com.xuechenhe.ssm.common.Constants;
 import com.xuechenhe.ssm.service.UploadService;
@@ -68,5 +73,19 @@ public class UploadController {
 		}
 		return urls;
 		
+	}
+	@RequestMapping("uploadFck")
+	public void uploadFck(HttpServletResponse res,HttpServletRequest req) throws IOException, Exception {
+		MultipartRequest request=(MultipartRequest)req;
+		Map<String, MultipartFile> fileMap = request.getFileMap();
+		Set<Entry<String, MultipartFile>> entrySet = fileMap.entrySet();
+		for (Entry<String, MultipartFile> entry : entrySet) {
+			MultipartFile pic = entry.getValue();
+			String path=uploadService.uploadFile(pic.getBytes(), pic.getOriginalFilename(), pic.getSize());
+			JSONObject jo = new JSONObject();
+			jo.put("url", Constants.File_Server+path);
+			jo.put("error", 0);
+			res.getWriter().write(jo.toString());
+		}
 	}
 }
