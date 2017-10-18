@@ -10,5 +10,5 @@ public interface ProductService {
 	
 	public abstract void insertProduct(Product product);
 
-	public abstract void isShow(Long[] ids);
+	public abstract void isShow(Long[] ids) throws Exception;
 }

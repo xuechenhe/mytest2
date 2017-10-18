@@ -29,7 +29,7 @@ public class ProductController {
 	
 	private ColorService  colorService;
 	@RequestMapping("isShow")
-	public String isShow(Long [] ids) {
+	public String isShow(Long [] ids) throws Exception {
 		productService.isShow(ids);
 		return "redirect:/product/list.action";
 		
