@@ -28,7 +28,12 @@ public class ProductController {
 	@Autowired
 	
 	private ColorService  colorService;
-	
+	@RequestMapping("isShow")
+	public String isShow(Long [] ids) {
+		productService.isShow(ids);
+		return "redirect:/product/list.action";
+		
+	}
 	@RequestMapping("list")
 	public String list(String name,Long brandId,boolean isShow,Integer pageNo,Model model) {
 		model.addAttribute("name", name);

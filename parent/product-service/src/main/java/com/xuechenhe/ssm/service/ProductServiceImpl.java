@@ -92,5 +92,19 @@ public class ProductServiceImpl implements ProductService{
 
 		
 	}
+
+	@Override
+	public void isShow(Long[] ids) {
+		if(ids!=null) {
+			for (Long id : ids) {
+				Product product = new Product();
+				product.setId(id);
+				product.setIsShow(true);
+				
+				productDao.updateByPrimaryKeySelective(product);
+			}
+		}
+		
+	}
 	 
 }
