@@ -3,9 +3,15 @@ package com.xuechenhe.ssm.service;
 import java.util.Date;
 import java.util.List;
 
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Session;
+
 import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,7 +38,8 @@ public class ProductServiceImpl implements ProductService{
 	private Jedis jedis;
 	@Autowired
 	private SolrServer solrServer;
-
+    @Autowired
+    private JmsTemplate jmsTemplate;
 	@Override
 	public Pagination findProductPage(String name, Long brandId, Boolean isShow, Integer pageNo) {
 		
@@ -101,14 +108,22 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public void isShow(Long[] ids) throws Exception  {
 		if(ids!=null) {
-			for (Long id : ids) {
+			for (final Long id : ids) {
 				//1.根据id改变数据库中商品的上架状态
 				Product product = new Product();
 				product.setId(id);
 				product.setIsShow(true);
 				productDao.updateByPrimaryKeySelective(product);
-				
-				//2.根据id获取商品的详细数据
+				//发送消息 传递商品id
+				jmsTemplate.send(new MessageCreator() {
+					
+					@Override
+					public Message createMessage(Session session) throws JMSException {
+						
+						return session.createTextMessage(String.valueOf(id));
+					}
+				});
+				/*//2.根据id获取商品的详细数据
 				product= productDao.selectByPrimaryKey(id);
 				//获取同款商品最便宜的价格
 				SkuQuery skuQuery = new SkuQuery();
@@ -134,7 +149,7 @@ public class ProductServiceImpl implements ProductService{
 				}
 				 //将文档加入到solr服务中
 				solrServer.add(doc);
-				solrServer.commit();
+				solrServer.commit();*/
 				
 			}
 		}
