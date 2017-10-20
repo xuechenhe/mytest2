@@ -78,10 +78,23 @@ public class Product implements Serializable {
      * 添加时间
      */
     private Date createTime;
+    private Float price;
+    
 
-    private static final long serialVersionUID = 1L;
+    public Float getPrice() {
+		return price;
+	}
+	public void setPrice(Float price) {
+		this.price = price;
+	}
+
+	private static final long serialVersionUID = 1L;
     public  String[] getImages() {
-		return imgUrl.split(",");
+    	if(imgUrl!=null) {
+    		return imgUrl.split(",");
+    	}
+		return null;
+		
     	
     }
     public Long getId() {
