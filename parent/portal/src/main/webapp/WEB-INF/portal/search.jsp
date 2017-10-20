@@ -11,16 +11,16 @@
 <link type="text/css" rel="stylesheet" href="/css/search.css">
 <script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
 <script type="text/javascript">
-// var brandId = "${brandId}";
-// var price = "${price}";
-// var keyword  = "${keyword}";
-// function fqBrand(brandId) {
-// 	window.location.href = "/product/list?keyword="+keyword+"&brandId=" + brandId+"&price="+price;
-// }
+var brandId = "${brandId}";
+var price = "${price}";
+var keyword  = "${keyword}";
+function fqBrand(brandId) {
+	window.location.href = "/product/list?keyword="+keyword+"&brandId=" + brandId+"&price="+price;
+}
 
-// function fqPrice(price){
-// 	window.location.href = "/product/list?keyword="+keyword+"&price=" + price+"&brandId="+brandId;
-// }
+function fqPrice(price){
+	window.location.href = "/product/list?keyword="+keyword+"&price=" + price+"&brandId="+brandId;
+}
 
 // function detail(id){
 // 	window.open('/product/detail?productId='+id);

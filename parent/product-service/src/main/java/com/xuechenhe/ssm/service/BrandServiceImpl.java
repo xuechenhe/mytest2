@@ -1,21 +1,30 @@
 package com.xuechenhe.ssm.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.xuechenhe.ssm.common.Constants;
 import com.xuechenhe.ssm.dao.product.BrandDao;
 import com.xuechenhe.ssm.pojo.product.Brand;
 import com.xuechenhe.ssm.pojo.product.BrandQuery;
 
 import cn.itcast.common.page.Pagination;
+import redis.clients.jedis.Jedis;
 @Service("brandServiceImpl")
 @Transactional
 public class BrandServiceImpl implements BrandService {
 	@Autowired
 	private BrandDao brandDao;
+	
+	@Autowired
+	private Jedis jedis;
 	@Override
 	public List<Brand> queryBrandByNameAndIsDisplay(String name, Integer isDisplay) {
 		BrandQuery b = new BrandQuery();
@@ -55,6 +64,7 @@ public class BrandServiceImpl implements BrandService {
 	public void update(Brand brand) {
 		
 		brandDao.update(brand);
+		jedis.hset(Constants.BRAND_KEY, String.valueOf(brand.getId()), brand.getName());
 	}
 	@Override
 	public void addBrand(Brand brand) {
@@ -71,6 +81,22 @@ public class BrandServiceImpl implements BrandService {
 	 
 			brandDao.deleteAll(ids);
 		
+	}
+	@Override
+	public List<Brand> findBrandListFromRedis() {
+		List<Brand> brandList=new ArrayList<>();
+		
+		Map<String, String> map = jedis.hgetAll(Constants.BRAND_KEY);
+		if(map!=null && map.size()>0) {
+			Set<Entry<String, String>> entrySet = map.entrySet();
+			for (Entry<String, String> entry : entrySet) {
+				Brand brand = new Brand();
+				brand.setId(Long.parseLong(entry.getKey()));
+				brand.setName(entry.getValue());
+				brandList.add(brand);
+			}
+		}
+		return brandList;
 	}
 	
 

@@ -4,5 +4,6 @@ import cn.itcast.common.page.Pagination;
 
 public interface SearchService {
 	
-	public abstract Pagination searchProductPage(String keyword,Integer pageNo)throws Exception;
+
+	Pagination searchProductPage(String keyword, String price, Long brandId, Integer pageNo) throws Exception;
 } 

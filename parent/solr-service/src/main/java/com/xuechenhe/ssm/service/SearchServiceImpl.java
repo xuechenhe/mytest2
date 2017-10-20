@@ -1,6 +1,10 @@
 package com.xuechenhe.ssm.service;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrQuery.ORDER;
@@ -20,7 +24,7 @@ public class SearchServiceImpl implements SearchService {
 	@Autowired
 	private SolrServer solrService;
 	@Override
-	public Pagination searchProductPage(String keyword,Integer pageNo) throws Exception {
+	public Pagination searchProductPage(String keyword,String price,Long brandId,Integer pageNo) throws Exception {
 		StringBuilder params=new StringBuilder();
 		ProductQuery pq = new ProductQuery();
 		pq.setPageSize(8);
@@ -35,6 +39,39 @@ public class SearchServiceImpl implements SearchService {
 			sq.setQuery("*:*");
 		}
 		
+		
+		
+		
+		
+		
+		
+		if(brandId!=null) {
+			sq.addFilterQuery("brandId:"+brandId);
+			params.append("&brandId=").append(brandId);
+		}
+		if(price!=null) {
+			String[] split = price.split("-");
+			if(split.length==2) {
+				sq.addFilterQuery("price:[ "+split[0]+"  TO "+split[1]+"]");
+				
+			}else {
+				sq.addFilterQuery("price:[ "+split[0]+" TO *]");
+			}
+			
+			params.append("&price=").append(price);
+		}
+		
+		sq.setHighlight(true);
+		sq.setHighlightSimplePre("<span style=\"color:red\">");
+		sq.setHighlightSimplePost("</span>");
+		sq.addHighlightField("name_ik");
+		
+		
+		
+		
+		
+		
+		
 		sq.setStart(pq.getStartRow());
 		sq.setRows(pq.getPageSize());
 		sq.setSort("price",ORDER.asc);
@@ -43,13 +80,26 @@ public class SearchServiceImpl implements SearchService {
 		
 		
 		QueryResponse queryResponse = solrService.query(sq);
+		
 		SolrDocumentList results = queryResponse.getResults();
 		if(results!=null) {
 			totalCount= (int) results.getNumFound();
 			for (SolrDocument doc : results) {
 				Product p = new Product();
+				Map<String, Map<String, List<String>>> highlighting = queryResponse.getHighlighting();
+				if(highlighting!=null && highlighting.size()>0) {
+					List<String> list = highlighting.get(doc.get("id")).get("name_ik");
+					if(list!=null && list.size()>0) {
+						p.setName(list.get(0));
+					}else {
+						p.setName(String.valueOf(doc.get("name_ik")));
+					}
+				}else {
+					p.setName(String.valueOf(doc.get("name_ik")));
+				}
+				
 				p.setId(Long.parseLong(String.valueOf(doc.get("id"))));
-				p.setName(String.valueOf(doc.get("name_ik")));
+				
 				p.setBrandId(Long.parseLong(String.valueOf(doc.get("brandId"))));
 				
 				if(    String.valueOf(doc.get("price")) !=null     &&  !"".equals( String.valueOf(doc.get("price")))                        ) {

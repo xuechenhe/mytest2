@@ -21,4 +21,7 @@ public interface BrandService {
 	public abstract void deleteBrand(Long id);
 
 	public abstract void deleteAll(long[] ids);
+	
+	public abstract List<Brand> findBrandListFromRedis();
+	
 }

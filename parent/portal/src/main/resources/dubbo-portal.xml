@@ -16,6 +16,8 @@
 	<!-- 3. 消费默认1000 一秒 -->
 	<dubbo:reference interface="com.xuechenhe.ssm.service.SearchService"
 		id="searchServiceImpl"  url="dubbo://127.0.0.1:20881"/>
+	<dubbo:reference interface="com.xuechenhe.ssm.service.BrandService"
+		id="brandServiceImpl"  url="dubbo://127.0.0.1:20880"/>
 	
 
 	<!-- 超时全局设置 10分钟 -->
