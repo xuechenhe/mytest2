@@ -15,5 +15,9 @@ ${hello}
 	 这是第${person_index+1}次循环
 	</#if>
 </#list>
+<!-- 演示遍历Map数据 -->
+<#list personMap?keys as key>
+  key===== ${key}   value====${personMap[key]}
+</#list>
 </body>
 </html>

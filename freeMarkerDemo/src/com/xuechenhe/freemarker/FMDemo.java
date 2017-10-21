@@ -31,6 +31,14 @@ public class FMDemo {
 		personList.add("白骨精");
 		rootMap.put("personList", personList);
 		
+		Map<String,Object> personMap=new HashMap<>();
+		personMap.put("001", "悟空");
+		personMap.put("002", "八戒");
+		personMap.put("003", "悟能");
+		personMap.put("004", "白骨精");
+		
+		rootMap.put("personMap", personMap);
+		
 		
 		//设置一个输出流, 指定文件的输出名称和位置
 		FileWriter out = new FileWriter(new File("hello.html"));
