@@ -277,7 +277,7 @@ function fqPrice(price){
 					</div>
 				</div>
 				<div class="p-name p-name-type-2">
-					<a target="_blank" title="满129立减10,199减20优惠券,支持货到付款" href="javascript:;" onclick="">
+					<a target="_self" title="满129立减10,199减20优惠券,支持货到付款" href="javascript:;" onclick="window.open('http://localhost:8082/product/html/${product.id}.html')">
 						<em>${product.name }</em>
 					</a>
 				</div>

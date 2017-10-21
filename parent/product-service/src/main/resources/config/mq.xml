@@ -40,5 +40,9 @@
 		<property name="connectionFactory" ref="singleConnectionFactory"></property>
 		<!-- 指定默认的目标地点 -->
 		<property name="defaultDestinationName" value="productId"></property>
+		<!-- 发布订阅模式 -->
+		<property name="pubSubDomain" value="true" />
 	</bean>
+
+
 </beans>
