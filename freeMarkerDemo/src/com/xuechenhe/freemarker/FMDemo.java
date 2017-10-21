@@ -14,7 +14,7 @@ public class FMDemo {
 		//1. 初始化freemarker
 		Configuration conf = new Configuration();
 		//2. 设置加载模板的目录位置, 目录要写成在硬盘上的位置
-		conf.setDirectoryForTemplateLoading(new File("E:\\develop\\eclipse-workspace\\freeMarkerDemo\\ftl"));
+		conf.setDirectoryForTemplateLoading(new File("C:\\Users\\Administrator\\git\\mytest2\\freeMarkerDemo\\ftl"));
 		//3. 加载模板
 		Template template = conf.getTemplate("freemarker.html");
 		//放入模板中的数据对象
