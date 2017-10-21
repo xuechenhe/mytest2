@@ -2,7 +2,9 @@ package com.xuechenhe.freemarker;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import freemarker.template.Configuration;
@@ -21,6 +23,15 @@ public class FMDemo {
 		Map<String ,Object> rootMap=new HashMap<>();
 		//向页面传入String类型数据
 		rootMap.put("hello", "hello world");
+		
+		List<String> personList=new ArrayList<>();
+		personList.add("悟空");
+		personList.add("八戒");
+		personList.add("悟能");
+		personList.add("白骨精");
+		rootMap.put("personList", personList);
+		
+		
 		//设置一个输出流, 指定文件的输出名称和位置
 		FileWriter out = new FileWriter(new File("hello.html"));
 		//4. 生成静态化页面, 第一个参数:传入模板中的数据, 第二个参数:是一个io流, 指定将生成的静态化页面放到硬盘的哪个目录中
