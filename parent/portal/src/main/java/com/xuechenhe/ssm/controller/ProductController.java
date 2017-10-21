@@ -1,7 +1,9 @@
 package com.xuechenhe.ssm.controller;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.xuechenhe.ssm.pojo.product.Brand;
+import com.xuechenhe.ssm.pojo.product.Color;
+import com.xuechenhe.ssm.pojo.product.Product;
+import com.xuechenhe.ssm.pojo.product.Sku;
 import com.xuechenhe.ssm.service.BrandService;
+import com.xuechenhe.ssm.service.CmsService;
 import com.xuechenhe.ssm.service.SearchService;
 
 import cn.itcast.common.page.Pagination;
@@ -18,6 +24,8 @@ import cn.itcast.common.page.Pagination;
 public class ProductController {
 	@Autowired
 	private SearchService searchService;
+	@Autowired
+	private CmsService cmsService;
 	@RequestMapping("/")
 	public String index() {
 		return "index";
@@ -48,5 +56,24 @@ public class ProductController {
 		}
 		model.addAttribute("map", map);
 		return "search";
+	}
+	@RequestMapping("/product/detail")
+	public String detail(Long id,Model model) {
+		Product product = cmsService.findProductById(id);
+		List<Sku> skuList = cmsService.findSkuListByProductId(id);
+		model.addAttribute("product", product);
+		model.addAttribute("skuList", skuList);
+		
+		Set<Color> colors=new HashSet<>();
+		if(skuList!=null) {
+			for (Sku sku : skuList) {
+				Color color = sku.getColor();
+				colors.add(color);
+			}
+		}
+		model.addAttribute("colors", colors);
+		
+		return "product";
+		
 	}
 }
