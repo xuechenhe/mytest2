@@ -12,5 +12,6 @@ public class JedisTest {
 		Jedis jedis = new Jedis("192.168.200.128", 6379);
 		jedis.set("key1", "1");
 		System.out.println(jedis.get("key1"));
+		jedis.close();
 	}
 }

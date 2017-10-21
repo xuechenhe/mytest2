@@ -3,7 +3,6 @@ package com.xuechenhe.ssm.dao.product;
 import com.xuechenhe.ssm.pojo.product.Brand;
 import com.xuechenhe.ssm.pojo.product.BrandQuery;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface BrandDao {
 	public  abstract List<Brand> queryBrandByNameAndIsDisplay(BrandQuery brandQuery);

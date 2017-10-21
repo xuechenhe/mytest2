@@ -1,6 +1,5 @@
 package com.xuechenhe.ssm.test;
 
-import static org.junit.Assert.*;
 
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.common.SolrInputDocument;

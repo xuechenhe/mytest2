@@ -1,7 +1,5 @@
 package com.xuechenhe.ssm.pojo.product;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class BrandQuery {
 	  

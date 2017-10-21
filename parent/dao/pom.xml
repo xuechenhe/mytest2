@@ -6,8 +6,6 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>dao</artifactId>
-  <groupId>com.xuechenhe.newsport</groupId>
-  <version>0.0.1-SNAPSHOT</version>
   <dependencies>
   	<dependency>
   		<groupId>com.xuechenhe.newsport</groupId>

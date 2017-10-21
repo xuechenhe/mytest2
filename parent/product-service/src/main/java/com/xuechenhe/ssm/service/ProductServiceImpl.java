@@ -6,9 +6,6 @@ import java.util.List;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Session;
-
-import org.apache.solr.client.solrj.SolrServer;
-import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -21,7 +18,6 @@ import com.xuechenhe.ssm.pojo.product.Product;
 import com.xuechenhe.ssm.pojo.product.ProductQuery;
 import com.xuechenhe.ssm.pojo.product.ProductQuery.Criteria;
 import com.xuechenhe.ssm.pojo.product.Sku;
-import com.xuechenhe.ssm.pojo.product.SkuQuery;
 
 import cn.itcast.common.page.Pagination;
 import redis.clients.jedis.Jedis;
@@ -36,8 +32,8 @@ public class ProductServiceImpl implements ProductService{
 	private SkuDao skuDao;
 	@Autowired
 	private Jedis jedis;
-	@Autowired
-	private SolrServer solrServer;
+//	@Autowired
+//	private SolrServer solrServer;
     @Autowired
     private JmsTemplate jmsTemplate;
 	@Override

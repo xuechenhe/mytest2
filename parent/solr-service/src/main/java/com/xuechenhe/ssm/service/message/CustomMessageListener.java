@@ -2,7 +2,6 @@ package com.xuechenhe.ssm.service.message;
 
 import java.util.List;
 
-import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 

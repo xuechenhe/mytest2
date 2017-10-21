@@ -7,8 +7,6 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>common</artifactId>
-	<groupId>com.xuechenhe.newsport</groupId>
-	<version>0.0.1-SNAPSHOT</version>
 
 	<!-- 依赖管理之后台 -->
 	<dependencies>
