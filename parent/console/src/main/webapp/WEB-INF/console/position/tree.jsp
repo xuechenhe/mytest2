@@ -6,7 +6,7 @@
 	<c:forEach items="${list }" var="l" varStatus="stat">
 		{
 		"id": "${l.id }",
-		"text": "<a href='<c:if test="${l.isParent }">/position/list.do?root=${l.id }</c:if><c:if test="${!l.isParent }">/ad/list.do?root=${l.id }</c:if>' target='rightFrame'>${l.name }</a>",
+		"text": "<a href='<c:if test="${l.isParent }">/position/list.action?root=${l.id }</c:if><c:if test="${!l.isParent }">/ad/list.action?root=${l.id }</c:if>' target='rightFrame'>${l.name }</a>",
 		"classes": 
 			<c:choose>
 				<c:when test="${l.isParent }">"folder"</c:when>
@@ -21,4 +21,3 @@
 		<c:if test="${!stat.last }">,</c:if>
 	</c:forEach>
 ]
-

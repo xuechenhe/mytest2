@@ -38,51 +38,51 @@
     if ( !cfg.DATA_MSlide ) {
         cfg.DATA_MSlide=[];
     }
-	var data = [
-					{
-						"height":399,
-						"title":"",
-						"width":670,
-						"src":"/images/565bfb0cNaf023e06.jpg",
-						"href":"javascript:;"
-					},
-					{
-						"height":399,
-						"title":"",
-						"width":670,
-						"src":"/images/5653e38eNed7f4ffc.jpg",
-						"href":"javascript:;"
-					},
-					{
-						"height":399,
-						"title":"",
-						"width":670,
-						"src":"/images/5656b3deNcc43202a.jpg",
-						"href":"javascript:;"
-					},
-					{
-						"height":399,
-						"title":"",
-						"width":670,
-						"src":"/images/56569f87N3b9ee5a6.jpg",
-						"href":"javascript:;"
-					},
-					{
-						"height":399,
-						"title":"",
-						"width":670,
-						"src":"/images/565c0755N3d995d38.jpg",
-						"href":"javascript:;"
-					},
-					{
-						"height":399,
-						"title":"",
-						"width":670,
-						"src":"/images/565c189bNf9721325.jpg",
-						"href":"javascript:;"
-					}
-				];
-	//var data = ${ads};
+// 	var data = [
+// 					{
+// 						"height":399,
+// 						"title":"",
+// 						"width":670,
+// 						"src":"/images/565bfb0cNaf023e06.jpg",
+// 						"href":"javascript:;"
+// 					},
+// 					{
+// 						"height":399,
+// 						"title":"",
+// 						"width":670,
+// 						"src":"/images/5653e38eNed7f4ffc.jpg",
+// 						"href":"javascript:;"
+// 					},
+// 					{
+// 						"height":399,
+// 						"title":"",
+// 						"width":670,
+// 						"src":"/images/5656b3deNcc43202a.jpg",
+// 						"href":"javascript:;"
+// 					},
+// 					{
+// 						"height":399,
+// 						"title":"",
+// 						"width":670,
+// 						"src":"/images/56569f87N3b9ee5a6.jpg",
+// 						"href":"javascript:;"
+// 					},
+// 					{
+// 						"height":399,
+// 						"title":"",
+// 						"width":670,
+// 						"src":"/images/565c0755N3d995d38.jpg",
+// 						"href":"javascript:;"
+// 					},
+// 					{
+// 						"height":399,
+// 						"title":"",
+// 						"width":670,
+// 						"src":"/images/565c189bNf9721325.jpg",
+// 						"href":"javascript:;"
+// 					}
+// 				];
+	var data = ${ads};
 
     cfg.DATA_MSlide = data;
     // 初始化一个广告信息

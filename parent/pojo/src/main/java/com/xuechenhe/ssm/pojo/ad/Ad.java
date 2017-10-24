@@ -2,6 +2,8 @@ package com.xuechenhe.ssm.pojo.ad;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Ad implements Serializable {
     /**
      * 广告ID
@@ -12,6 +14,7 @@ public class Ad implements Serializable {
      * 广告位置ID
      */
     private Long positionId;
+    private Position position;
 
     /**
      * 广告标题
@@ -21,11 +24,13 @@ public class Ad implements Serializable {
     /**
      * 点击图片时触发的链接
      */
+    @JsonProperty("href")
     private String url;
 
     /**
      * 图片绝对路径
      */
+    @JsonProperty("src")
     private String picture;
 
     /**
@@ -39,8 +44,16 @@ public class Ad implements Serializable {
     private Integer width;
 
     private static final long serialVersionUID = 1L;
+    
+    public Position getPosition() {
+		return position;
+	}
 
-    public Long getId() {
+	public void setPosition(Position position) {
+		this.position = position;
+	}
+
+	public Long getId() {
         return id;
     }
 

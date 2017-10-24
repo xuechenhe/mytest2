@@ -10,10 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.xuechenhe.ssm.common.JsonUtil;
+import com.xuechenhe.ssm.pojo.ad.Ad;
 import com.xuechenhe.ssm.pojo.product.Brand;
 import com.xuechenhe.ssm.pojo.product.Color;
 import com.xuechenhe.ssm.pojo.product.Product;
 import com.xuechenhe.ssm.pojo.product.Sku;
+import com.xuechenhe.ssm.service.AdService;
 import com.xuechenhe.ssm.service.BrandService;
 import com.xuechenhe.ssm.service.CmsService;
 import com.xuechenhe.ssm.service.SearchService;
@@ -26,8 +29,15 @@ public class ProductController {
 	private SearchService searchService;
 	@Autowired
 	private CmsService cmsService;
+	
+	@Autowired
+	private AdService adService;
 	@RequestMapping("/")
-	public String index() {
+	public String index(Model model) throws Exception {
+		/*List<Ad> list = adService.findAdListByParentId(89L);
+		String str = JsonUtil.obj2JsonStr(list);*/
+		String str = adService.findAdListFromRedis();
+		model.addAttribute("ads", str);
 		return "index";
 	}
 	@Autowired

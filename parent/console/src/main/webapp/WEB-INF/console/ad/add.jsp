@@ -9,14 +9,14 @@
 function uploadPic(){
 	//jquery.js   jquery.form.js
 	var options  = {
-			url : "/upload/uploadPic.do",
+			url : "/upload/uploadPic.action",
 			type : "post",
 			dataType : "json",
 			success : function(data){
 				//回显
-				$("#allUrl").attr("src",data.path);
+				$("#allUrl").attr("src",data.url);
 				//赋值给隐藏域
-				$("#imgUrl").val(data.path);
+				$("#imgUrl").val(data.url);
 			}
 			
 	};
@@ -33,15 +33,15 @@ function uploadPic(){
 	<div class="clear"></div>
 </div>
 <div class="body-box" style="float:right">
-	<form id="jvForm" action="add.do" method="post">
+	<form id="jvForm" action="/ad/add.action" method="post">
 		<table cellspacing="1" cellpadding="2" width="100%" border="0" class="pn-ftable">
 			<tbody>
 				<tr>
 					<td width="20%" class="pn-flabel pn-flabel-h">
 						<span class="pn-frequired">*</span>
 						广告位置:</td><td width="80%" class="pn-fcontent">
-						<input type="hidden" value="" name="positionId"/>
-						大广告
+						<input type="hidden" value="${position.id }" name="positionId"/>
+						${position.name }
 					</td>
 				</tr>
 				<tr>
@@ -73,8 +73,8 @@ function uploadPic(){
 				<tr>
 					<td width="20%" class="pn-flabel pn-flabel-h"></td>
 						<td width="80%" class="pn-fcontent">
-						<img width="489" height="303" id="allUrl" src="/images/57cd0006Na82dfc0d.jpg"/>
-						<input type="hidden" name="picture" id="imgUrl" value="/images/57cd0006Na82dfc0d.jpg"/>
+						<img width="489" height="303" id="allUrl" src=""/>
+						<input type="hidden" name="picture" id="imgUrl" value=""/>
 						<input type="file" name="pic" onchange="uploadPic()"/>
 					</td>
 				</tr>

@@ -38,5 +38,9 @@
 		ref="colorServiceImpl" />
 	<dubbo:service interface="com.xuechenhe.ssm.service.SkuService"
 		ref="skuServiceImpl" />
+	<dubbo:service interface="com.xuechenhe.ssm.service.PositionService"
+		ref="positionServiceImpl" />
+	<dubbo:service interface="com.xuechenhe.ssm.service.AdService"
+		ref="adServiceImpl" />
 </beans>
  
